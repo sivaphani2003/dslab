@@ -12,10 +12,11 @@ void selectionsort(int a[30], int n)
             {
                 minps=j;
             }
-            temp=a[minps];
-            a[minps]=a[i];
-            a[i]=temp;
+            
         }
+        temp=a[minps];
+        a[minps]=a[i];
+        a[i]=temp;
     }
     printf("array after sorted :  ");
     for(i=0;i<n;i++)
