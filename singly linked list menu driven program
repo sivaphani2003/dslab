@@ -160,9 +160,9 @@ void sort(node *first)
     new=(node*)malloc(sizeof(node));
     new->data=0;
     new->next=NULL;
-    for(temp1=first;temp1!=NULL;temp1=temp1->next)
+    for(temp1=first;temp1->next!=NULL;temp1=temp1->next)
     {
-        for(temp2=first;temp2!=NULL;temp2=temp2->next)
+        for(temp2->next=first;temp2!=NULL;temp2=temp2->next)
         {
             if(temp1->data > temp2->data)
             {
