@@ -1,0 +1,140 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct polynode *polypointer;
+struct polynode{
+    int coef;
+    int expon;
+    polypointer link;
+} ;
+polypointer a,b;
+int compare(int a1,int b1)
+{
+    if(a1<b1)
+    {
+        return -1;
+    }
+    else if(a1==b1)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+void attach(float coefficient,int exponent,polypointer *ptr)
+{
+    polypointer temp;
+    temp=(polypointer)malloc(sizeof(polypointer));
+    temp->coef=coefficient;
+    temp->expon=exponent;
+    (*ptr)->link = temp;
+    *ptr = temp;
+}
+polypointer padd(polypointer a,polypointer b)
+{
+    polypointer c,rear,temp;
+    int sum;
+    rear=(polypointer)malloc(sizeof(polypointer));
+    c=rear;
+    while(a&&b)
+    {
+        switch(compare(a->expon,b->expon))
+        {
+            case -1:
+                    attach(b->coef,b->expon,&rear);
+                    b=b->link;
+                    break;
+            case 0:
+                    sum=a->coef+b->coef;
+                    if(sum) attach(sum,a->expon,&rear);
+                    a=a->link;b=b->link;break;
+            case 1:
+                    attach(a->coef,a->expon,&rear);
+                    a=a->link;
+        }
+        for(; a; a=a->link) attach(a->coef,a->expon,&rear);
+        for(; b; b=b->link) attach(b->coef,b->expon,&rear);
+        rear->link=NULL;
+        temp=c;c=c->link;free(temp);
+        return c;
+    }
+}
+polypointer create(polypointer first)
+{
+    polypointer new,prev;
+    int x,y;
+    int z=3;
+    while(z--)
+    {
+        printf("enter %d x\n",3-z);
+        printf("enter %d y\n",3-z);
+        scanf("%d",&x);
+        scanf("%d",&y);
+        new=(polypointer)malloc(sizeof(polypointer));
+        new->coef=x;
+        new->expon=y;
+        new->link=NULL;
+        if(first==NULL)
+        {
+            first=new;
+        }
+        else{
+            prev->link=new;
+        }
+        prev=new;
+        
+    }
+    return first;
+}
+void sort(polypointer first)
+{
+    polypointer temp1,temp2,new;
+    new=(polypointer)malloc(sizeof(polypointer));
+    new->coef=0;
+    new->expon=0;
+    new->link=NULL;
+    for(temp1=first;temp1!=NULL;temp1=temp1->link)
+    {
+        for(temp2=first;temp2!=NULL;temp2=temp2->link)
+        {
+            if(temp1->expon > temp2->expon)
+            {
+                new->expon = temp1->expon;
+                temp1->expon = temp2->expon;
+                temp2->expon=new->expon;
+            }
+        }
+    }
+}
+void display(polypointer first)
+{
+    polypointer temp=first;
+    if(first==NULL)
+    {
+        printf("No list to print");
+    }
+    else
+    {
+        while(temp!=NULL)
+        {
+            printf("|%d|,|%d|->",temp->coef,temp->expon);
+            temp=temp->link;
+        }
+        printf("NULL\n");
+    }
+}
+void main()
+{
+    polypointer c1;
+    polypointer head=NULL;
+    a=create(head);
+    display(a);
+    b=create(head);
+    display(b);
+    c1=padd(a,b);
+    display(c1);
+    sort(c1);
+    display(c1);
+}
