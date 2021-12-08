@@ -25,7 +25,7 @@ node* create(node *first)
             prev->next=new;
         }
         prev=new;
-        // printf("enter data (enter -1 to stop)\t");
+        printf("enter data (enter -1 to stop)\t");
         scanf("%d",&x);
     }
     return first;
@@ -162,7 +162,7 @@ void sort(node *first)
     new->next=NULL;
     for(temp1=first;temp1->next!=NULL;temp1=temp1->next)
     {
-        for(temp2->next=first;temp2!=NULL;temp2=temp2->next)
+        for(temp2=first->next;temp2!=NULL;temp2=temp2->next)
         {
             if(temp1->data > temp2->data)
             {
