@@ -193,8 +193,8 @@ void main()
     while(1)
     {
         printf("\nenter your choice");
-        printf("\n 1.create \n2.display \n3.count \n4.search\n 5.insert at beginning \n");
-        printf("6.insertion at ending\n 7.insertion at given position\n 8.delete\n9.sort\n10.reverse\n11.exit\n");
+        printf("\n1.create \n2.display \n3.count \n4.search\n5.insert at beginning \n");
+        printf("6.insertion at ending\n7.insertion at given position\n8.delete\n9.sort\n10.reverse\n11.exit\n");
         scanf("%d",&ch);
         switch(ch)
         {
