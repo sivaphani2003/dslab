@@ -142,6 +142,19 @@ node *delete(node *first,int x)
     {
         temp1=first;
         temp=temp->next;
+        while(temp!=NULL)
+        {
+            if((temp -> data) == x)
+            {
+                flag=1;
+                break;
+            }
+            else
+            {
+                temp1=temp;
+                temp=temp->next;
+            }
+        }
         if(flag==1)
         {
             temp1->next=temp->next;
