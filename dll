@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct dll
+{
+    int data;
+    struct dll *left,*right;
+};
+typedef struct dll node;
+node *create(node *first)
+{
+    node *temp=first;
+    node *new;
+    int x;
+    printf("enter the data(enter -1 to stop)");
+    scanf("%d",&x);
+    while()
+}
+void main()
+{
+    node* l1;
+    node* head=NULL;
+    l1=create(l1);
+    display(l1);
+}
