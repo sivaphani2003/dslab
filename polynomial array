@@ -1,0 +1,122 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 50
+struct polynomial
+{
+    int highpower;
+    int coeff[MAX];
+};
+typedef struct polynomial poly;
+poly* create()
+{
+    poly *p;
+    int i;
+    p=(poly*)calloc(1,sizeof(poly));
+    printf("enter highest power of the polynomial\n");
+    scanf("%d",&p->highpower);
+    for(i=p->highpower;i>=0;i--)
+    {
+        printf("enter coefficient of %d exponent ",i);
+        scanf("%d",&p->coeff[i]);
+    }
+    return p;
+}
+int  max(int a,int b)
+{
+    if(a>b)
+    {
+        return a;
+    }
+    else
+    {
+        return b;
+    }
+}
+poly*add(poly *p1,poly *p2)
+{
+    poly *p3;
+    int i;
+    p3=(poly*)calloc(1,sizeof(poly));
+    p3->highpower=max(p1->highpower,p2->highpower);
+    for(i=p3->highpower;i>=0;i--)
+    {
+        p3->coeff[i]=p1->coeff[i]+p2->coeff[i];
+
+    }
+    return p3;
+}
+poly*sub(poly *p1,poly *p2)
+{
+    poly *p3;
+    int i;
+    p3=(poly*)calloc(1,sizeof(poly));
+    p3->highpower=max(p1->highpower,p2->highpower);
+    for(i=p3->highpower;i>=0;i--)
+    {
+        p3->coeff[i]=p1->coeff[i]-p2->coeff[i];
+
+    }
+    return p3;
+}
+poly*mult(poly *p1,poly *p2)
+{
+    poly *p3;
+    int i,j;
+    p3=(poly*)calloc(1,sizeof(poly));
+    p3->highpower=p1->highpower+p2->highpower;
+    for(i=p3->highpower;i>=0;i--)
+    {
+        p3->coeff[i]=0;
+    }
+    for(i=p1->highpower;i>=0;i--)
+    {
+        for(j=p2->highpower;j>=0;j--)
+        {
+            p3->coeff[i+j]=p3->coeff[i+j]+p1->coeff[i]*p2->coeff[j];
+        }
+    }
+    return p3;
+}
+void display(poly*p4)
+{
+    for(int i=p4->highpower;i>=0;i--)
+    {
+        printf("%dx^%d",p4->coeff[i],i);
+        if(i!=0)
+        {
+            printf("+");
+        }
+    }
+}
+void main()
+{
+    poly *p1,*p2,*p3;
+    int ch;
+    printf("create first polynomial\n");
+    p1=create();
+    printf("create second polynomial\n");
+    p2=create();
+    while(1)
+    {
+        printf("\n1.add\n2.sub\n3.mult\n4.exit");
+        printf("\nenter your choice");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1: p3=add(p1,p2);
+                    printf("\nThe result of addition is\n");
+                    display(p3);
+                    break;
+            case 2: p3=sub(p1,p2);
+                    printf("\nThe addition of subraction is\n");
+                    display(p3);
+                    break;
+            case 3: p3=mult(p1,p2);
+                    printf("\nThe result of multiplication is\n");
+                    display(p3);
+                    break;
+            case 4: exit(0);
+            default: printf("\n please check your choice");
+        }
+    }
+}
