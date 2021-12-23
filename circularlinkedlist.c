@@ -195,6 +195,47 @@ node *delete(node *first,int x)
     }
     return first;
 }
+void sort(node *first)
+{
+    node *temp1,*temp2,*new;
+    new=(node*)malloc(sizeof(node));
+    new->data=0;
+    new->next=NULL;
+    temp1=first;
+    do
+    {
+        do
+        {
+            temp2=temp1->next;
+            if(temp1->data>temp2->data)
+            {
+                new->data=temp1->data;
+                temp1->data=temp2->data;
+                temp2->data=new->data;
+            }
+            temp2=temp2->next;
+        } while (temp2!=first);
+        temp1=temp1->next;
+        
+    } while (temp1!=first);
+    
+}
+node* reverse(node *first)
+{
+    node *present=first;
+    node *l3=NULL;
+    if(first==NULL)
+    {
+        return l3;
+    }
+    do
+    {
+        l3=insertatbeg(l3,present->data);
+        present=present->next;
+    } while (present!=first);
+
+    return l3;
+}
 void display(node *first)
 {
     node *temp=first;
@@ -214,7 +255,7 @@ void display(node *first)
 void main()
 {
     int ch,c,x,pos;
-    node *head;
+    node *head,*l3;
     while(1)
     {
         printf("\nenter your choice");
@@ -250,10 +291,11 @@ void main()
                     scanf("%d",&x);
                     head=delete(head,x);
                     break;
-            // case 9: sort(head);
-            //         break;
-            // case 10:head=reverse(head);
-            //         break;
+            case 9: sort(head);
+                    break;
+            case 10: l3=reverse(head);
+                     display(l3);
+                    break;
             case 11:exit(0);
                     break;
             default:printf("please check your given choice");
