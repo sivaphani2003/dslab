@@ -134,7 +134,7 @@ node *delete(node *first,int x)
     int flag=0;
     if (first==NULL)
     {
-        printf("NO elements to delete\n");
+        printf("No elements to delete\n");
     }
     else
     {
@@ -147,14 +147,14 @@ node *delete(node *first,int x)
             first=first->right;
             free(temp);
             temp2->right=first;
-            first->left=temp2;z
+            first->left=temp2;
         }
         else
         {
             temp1=first->right;
-            while(temp1!=first)
+            while(temp->right!=first)
             {
-                if (temp1->data==x)
+                if (temp->data==x)
                 {
                     flag=1;
                     break;
@@ -168,12 +168,13 @@ node *delete(node *first,int x)
             if(flag)
             {
                 temp1->right=temp->right;
+                temp->right->left=temp1;
                 free(temp);
             }
             else
             {
                 printf("Element not found to delete\n");
-            }
+            } 
         }
     }
     return first;
@@ -303,10 +304,10 @@ int main()
                     scanf("%d%d",&pos,&x);
                     head=insertatpos(head,pos,x);
                     break;
-            // case 8: printf("enter thre element to be deleted\n");
-            //         scanf("%d",&x);
-            //         head=delete(head,x);
-            //         break;
+            case 8: printf("enter thre element to be deleted\n");
+                    scanf("%d",&x);
+                    head=delete(head,x);
+                    break;
             case 9: sort(head);
                     break;
             case 10:head=reverse(head);
