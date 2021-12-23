@@ -195,30 +195,23 @@ node *delete(node *first,int x)
     }
     return first;
 }
-void sort(node *first)
+node *sort(node *first)
 {
-    node *temp1,*temp2,*new;
-    new=(node*)malloc(sizeof(node));
-    new->data=0;
-    new->next=NULL;
-    temp1=first;
-    do
+    node *temp=first,*temp1;
+    int x;
+    for(temp;temp->next!=first;temp=temp->next)
     {
-        do
+        for(temp1=temp->next;temp1!=first;temp1=temp1->next)
         {
-            temp2=temp1->next;
-            if(temp1->data>temp2->data)
+            if(temp->data>temp1->data)
             {
-                new->data=temp1->data;
-                temp1->data=temp2->data;
-                temp2->data=new->data;
+                x=temp->data;
+                temp->data=temp1->data;
+                temp1->data=x;
             }
-            temp2=temp2->next;
-        } while (temp2!=first);
-        temp1=temp1->next;
-        
-    } while (temp1!=first);
-    
+        }
+    }
+    return first;
 }
 node* reverse(node *first)
 {
