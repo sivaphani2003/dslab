@@ -47,13 +47,11 @@ void display(node *first)
     }
     else
     {
-        printf("|%d|",temp->left->data);
         do
         {
             printf("<--|%d|-->",temp->data);
             temp=temp->right;
         }while(temp!=first);
-        printf("|%d|",temp->data);
     }
 }
 
