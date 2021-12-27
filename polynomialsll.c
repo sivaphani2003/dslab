@@ -12,40 +12,40 @@ node* addterm(node *first,node *new)
         node *temp,*temp1;
         if (first==NULL)
         {
-                first=new;
-                temp=new;
+            first=new;
+            temp=new;
         }
         else if(first->exp<new->exp)
         {
-                new->next=first;
-                first=new;
+            new->next=first;
+            first=new;
         }
         else if(first->exp==new->exp)
         {
-                first->coeff=first->coeff+new->coeff;
+            first->coeff=first->coeff+new->coeff;
         }
         else
         {
-                temp=first->next;
-                temp1=first;
-                while(temp!=NULL && temp->exp>new->exp)
-                {
-                        temp1=temp;
-                        temp=temp->next;
-                }
-                if (temp==NULL)
-                {
-                        temp1->next=new;
-}
-                else if (temp->exp==new->exp)
-                {
-                        temp->coeff=temp->coeff+new->coeff;
-                }
-                else
-                {
-                        temp1->next=new;
-                        new->next=temp;
-                }
+            temp=first->next;
+            temp1=first;
+            while(temp!=NULL && temp->exp>new->exp)
+            {
+                temp1=temp;
+                temp=temp->next;
+            }
+            if (temp==NULL)
+            {
+                temp1->next=new;
+            }
+            else if (temp->exp==new->exp)
+            {
+                temp->coeff=temp->coeff+new->coeff;
+            }
+            else
+            {
+                temp1->next=new;
+                new->next=temp;
+            }
         }
         return first;
 
