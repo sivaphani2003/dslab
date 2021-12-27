@@ -221,44 +221,43 @@ int main()
 {
         node *p1=NULL,*p2=NULL,*p3,*p4,*p5;
         int ch;
-        printf("Enter your choice\n");
-        printf("1:Create\n2:display\n3:add\n4:sub\n5:multiply\n6:exit\n");
-        scanf("%d",&ch);
+        
         while(1)
         {
-                switch(ch)
-                {
-                        case 1:p1=create();
-                               break;
-                        case 2:display(p1);
-                               break;
-                        case 3:p1=create();
-                               display(p1);
-                               p2=create();
-                               display(p2);
-                               p3=add(p1,p2);
-                               display(p3);
-                               break;
-                        case 4:p1=create();
-                               display(p1);
-                               p2=create();
-                               display(p2);
-                               p4=sub(p1,p2);
-                               display(p4);
-                               break;
-                        case 5:p1=create();
-                               display(p1);
-                               p2=create();
-                               display(p2);
-                               p5=mul(p1,p2);
-                               display(p5);
-                               break;
-                        case 6:exit(0);
-                        default:printf("Enter a correct choice\n");
-                                break;
-                }
-                printf("Enter choice\n");
-                scanf("%d",&ch);
+            printf("Enter your choice\n");
+            printf("1:Create\n2:display\n3:add\n4:sub\n5:multiply\n6:exit\n");
+            scanf("%d",&ch);
+            switch(ch)
+            {
+                case 1:printf("enter first polynomial\n");
+                       p1=create();
+                       printf("enter second polynomial\n");
+                       p2=create();
+                       break;
+                case 2: printf("the first polynomial is : ");
+                        display(p1);
+                        printf("the second polynomial is : ");
+                        display(p2);
+                        break;
+                case 3:
+                       p3=add(p1,p2);
+                       printf("the polynomial after addition is\n");
+                       display(p3);
+                       break;
+                case 4:
+                       printf("the polynomial after subraction is\n");
+                       p4=sub(p1,p2);
+                       display(p4);
+                       break;
+                case 5:
+                       printf("the polynomial after multiplication is\n");
+                       p5=mul(p1,p2);
+                       display(p5);
+                       break;
+                case 6:exit(0);
+                default:printf("Enter a correct choice\n");
+                        break;
+            }
         }
 return 0;
 }
