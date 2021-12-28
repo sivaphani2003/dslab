@@ -1,11 +1,3 @@
-/******************************************************************************
-
-Welcome to GDB Online.
-GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
-C#, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
-Code, Compile, Run and Debug online from anywhere in world.
-
-*******************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 int hash(int x)
@@ -121,12 +113,11 @@ int main()
         scanf("%d",&ch);
         switch(ch)
         {
-            case 1: printf("Enter a value to insert\n");
+            case 1: printf("Enter a value to insert(enter -1 to stop)\n");
                     scanf("%d",&x1);
                     do
                     {
                         insert(a,x1);
-                        printf("Enter a value(Enter -1 to stop)\n");
                         scanf("%d",&x1);
                     }while(x1!=-1);
                     break;
