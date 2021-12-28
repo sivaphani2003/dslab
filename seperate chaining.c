@@ -61,7 +61,7 @@ void search(node *t[10],int x)
 void delete(node *t[10],int x)
 {
     int i=hash(x),flag=0;
-    node *p=t[i]->next,*p1;
+    node *p=t[i]->next,*p1=t[i];
     if (p==NULL)
     {
         printf("No elements present to delete\n");
