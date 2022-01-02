@@ -8,7 +8,7 @@ struct dcll
 typedef struct dcll node;
 node* create(node *first)
 {
-    node *temp,*new;;
+    node *temp,*new;
     int x;
     printf("Enter data and enter -1 to stop\n");
     scanf("%d",&x);
