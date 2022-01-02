@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-struct dll 
+struct dcll 
 {
     int data;
-    struct dll *left,*right;
+    struct dcll *left,*right;
 };
-typedef struct dll node;
+typedef struct dcll node;
 node* create(node *first)
 {
     node *temp,*new;;
