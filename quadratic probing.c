@@ -6,11 +6,7 @@ int hash(int x)
 {
         return x%10;
 }
-int square(int x)
-{
-        return x*x;
-}
-int hash1(int a[10],int x)
+int hash1(int a[10],int x,int r)
 {
         int i=x%10;
         int h=z%10;
@@ -20,9 +16,8 @@ int hash1(int a[10],int x)
         }
         else
         {
-                i=h+(k*k);
-                k++;
-                return hash1(a,i);
+                i=h+(r*r);
+                return hash1(a,i,r+1);
         }
 }
 void insert(int a[10],int x)
@@ -36,7 +31,7 @@ void insert(int a[10],int x)
     }
     else
     {
-            j=hash1(a,x);
+            j=hash1(a,x,1);
             a[j]=z;
             flag=1;
     }
@@ -44,6 +39,26 @@ void insert(int a[10],int x)
     {
             printf("No place to insert element\n");
     }
+}
+void search(int a[10],int x)
+{
+        int i,flag=0;
+        for(i=0;i<10;i++)
+        {
+                if (a[i]==x)
+                {
+                        flag=1;
+                        break;
+                }
+        }
+        if(flag)
+        {
+                printf("Element found\n");
+        }
+        else
+        {
+                printf("Element not found\n");
+        }
 }
 void display(int a[10])
 {
@@ -56,7 +71,7 @@ void display(int a[10])
 }
 int main()
 {
-        int a[10],x;
+        int a[10],x,x1;
         for (int i=0;i<10;i++)
         {
                 a[i]=-1;
@@ -71,5 +86,8 @@ int main()
                 scanf("%d",&x);
         }
         display(a);
+        printf("Enter element to search\n");
+        scanf("%d",&x1);
+        search(a,x1);
         return 0;
 }
