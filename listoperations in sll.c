@@ -117,8 +117,8 @@ node * concatenate(node* l1,node *l2)
                         temp=temp->next;
                 }
                 temp->next=l2;
-                return l3;
         }
+	 return l3;
 }
 node * listunion(node *l1,node *l2)
 {
