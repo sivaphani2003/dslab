@@ -65,8 +65,15 @@ int main()
                                push(x);
                                break;
                         case 2:x=pop();
-                               printf("Element removed from top is %d\n",x);
-                               break;
+                              if(x==-1)
+                              {
+                                  printf("the stack is underflowed\n");
+                              }
+                              else
+                              {
+                                   printf("the element %d is popped out\n",x);
+                              }
+                              break;
                         case 3:display();
                                break;
                         case 4:exit(0);
