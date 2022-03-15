@@ -25,13 +25,10 @@ int main()
         {
             scanf("%d",&a[i][j]);
         }
+        visited[i]=0;
     }
     printf("enter the v value\n");
     scanf("%d",&v);
-    for(int i=0;i<n;i++)
-    {
-        visited[i]=0;
-    }
     dfs(v);
     return 0;
 }
